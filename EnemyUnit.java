@@ -1,4 +1,5 @@
-// Game Demo
+
+
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -27,7 +28,7 @@ public class EnemyUnit extends Being {
     }
     public Image getEnemyImg(){
         ImageIcon ic = new ImageIcon
-        ("C:\\Users\\Gomensnana\\Desktop\\DemoEnemy.png");
+        ("DemoEnemy.png");
         return ic.getImage();
     }
     

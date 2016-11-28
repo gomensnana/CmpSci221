@@ -1,4 +1,5 @@
-// Jack Roboski
+
+
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 
@@ -30,6 +32,7 @@ public class StratGame2 extends JPanel implements ActionListener {
     static ArrayList<EnemyUnit> enemies = new ArrayList<EnemyUnit>();
     static ArrayList<Projectile> projectile = new ArrayList<Projectile>();
     static ArrayList<PowerUp> powerUp = new ArrayList<PowerUp>();
+    static ArrayList<SuperPower> superpowers = new ArrayList<SuperPower>();
     Random rand = new Random();
     
     public StratGame2(){
@@ -56,7 +59,7 @@ public class StratGame2 extends JPanel implements ActionListener {
         Graphics2D g2d = (Graphics2D) g;
         
         ImageIcon ic = 
-        new ImageIcon("C:\\Users\\Gomensnana\\Desktop\\DemoMissile.png");
+        new ImageIcon("DemoMissile.png");
         g2d.drawImage(ic.getImage(), 0, 0,null);
         
         unit.draw(g2d);
@@ -74,6 +77,10 @@ public class StratGame2 extends JPanel implements ActionListener {
         for (int i = 0; i < projectile.size();i++){
             Projectile p = projectile.get(i);
             p.draw(g2d);
+        }
+        for (int i = 0; i < superpowers.size(); i++){
+            SuperPower tempPU = superpowers.get(i);
+            tempPU.draw(g2d);
         }
     }
     
@@ -94,6 +101,10 @@ public class StratGame2 extends JPanel implements ActionListener {
         for (int i = 0; i < projectile.size();i++){
             Projectile p = projectile.get(i);
             p.update();
+        }
+        for (int i = 0; i < superpowers.size(); i++){
+            SuperPower tempPU = superpowers.get(i);
+            tempPU.update();
         }
         
         checkEnd();
@@ -141,12 +152,24 @@ public class StratGame2 extends JPanel implements ActionListener {
         return powerUp;
     }
     
+    public void addSuperPower(SuperPower u) {
+        superpowers.add(u);
+    }
+    
+    public static void removeSuperPower(SuperPower u){
+        superpowers.remove(u);
+    }
+    
+    public static ArrayList<SuperPower> getSuperPowerList(){
+        return superpowers;
+    }
     public void startGame(){
         enemyCount = level*5;
         powerCt = level;
         for (int i = 0; i < enemyCount; i++){
             addEnemy(new EnemyUnit(rand.nextInt(400)+50,-rand.nextInt(600)));
         }
+        addSuperPower(new SuperPower(rand.nextInt(500),-rand.nextInt(600)));
         for (int i = 0; i < powerCt; i++){
             addPowerUp(new PowerUp(rand.nextInt(400)+50,-rand.nextInt(600)));
         }
@@ -166,4 +189,3 @@ public class StratGame2 extends JPanel implements ActionListener {
         }
     }
 }
-

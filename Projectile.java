@@ -1,4 +1,4 @@
-//Game Demo
+
 
 
 import java.awt.Graphics2D;
@@ -27,7 +27,7 @@ public class Projectile extends Being {
     }
     
     public Image getProjectileImg(){
-        ImageIcon ic = new ImageIcon("C:\\Users\\Gomensnana\\Desktop\\DemoMissile.png");
+        ImageIcon ic = new ImageIcon("DemoMissile.png");
         return ic.getImage();
     }
     

@@ -1,4 +1,3 @@
-// Jack Roboski
 
 
 import java.awt.Graphics2D;
@@ -6,7 +5,7 @@ import java.awt.Graphics2D;
 
 public class Being {
     
-    int x,y;
+    public int x,y;
     
     public Being(int x, int y){
     this.x = x;
